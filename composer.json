@@ -1,0 +1,23 @@
+{
+	"name": "ping-qu/open-api-sdk",
+	"description": "pingqu open api sdk",
+	"version": "0.0.1",
+	"require": {
+		"php": ">=5.4"
+	},
+	"require-dev": {
+	},
+	"autoload": {
+		"psr-4": {
+			"Pingqu\\OpenApiSdk": "src/"
+		}
+	},
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "linyue",
+			"email": "769353695@qq.com"
+		}
+
+	]
+}
