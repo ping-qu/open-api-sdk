@@ -9,7 +9,7 @@
 	},
 	"autoload": {
 		"psr-4": {
-			"Pingqu\\OpenApiSdk": "src/"
+			"Pingqu\\OpenApiSdk\\": "src/"
 		}
 	},
 	"license": "MIT",
