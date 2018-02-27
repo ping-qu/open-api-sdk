@@ -13,7 +13,8 @@ class Example
         $access_key_secret = 'dfd2ern2dD2KFSd2f3krn3fafd33sSf';
         $client = new \Pingqu\OpenApiSdk\Transcode\Client($access_key_id,$access_key_secret);
         $res = $client->VideoJob()
-            ->setCallbackUrl(\Request::getSchemeAndHttpHost().'/api/callback')
+            ->setCallbackUrl(\Request::getSchemeAndHttpHost().'/api/callback')  //设置回调地址
+            ->setCallbackParams('ddddd')//设置回调参数
             ->add('source/video/00b284a6a24577daa500d46e401d0c13.mp4','source/video/test/00b284a6a24577daa500d46e401d0c13.m3u8',5,7);
         var_dump($res);
     }

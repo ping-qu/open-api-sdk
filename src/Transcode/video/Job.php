@@ -18,6 +18,7 @@ class Job
     private $client;
 
     private $callback_url;
+    private $callback_params;
     //const JOB_URL = 'http://service.cloud.ping-qu.com';
 
 
@@ -29,6 +30,14 @@ class Job
 
     public function setCallbackUrl($url){
         $this->callback_url = $url;
+        return $this;
+    }
+
+    public function setCallbackParams($params){
+        if (!is_string($params)){
+            throw new ClientException('自定义回调参数只能是字符串类型');
+        }
+        $this->callback_params = $params;
         return $this;
     }
 
@@ -44,6 +53,12 @@ class Job
             'preset_id'=>$presetId,
             'pipeline_id'=>$pipelineId,
         );
+        if (isset($this->callback_url)){
+            $postParams['callback_url'] = $this->callback_url;
+        }
+        if (isset($this->callback_params)){
+            $postParams['callback_params'] = $this->callback_params;
+        }
         $query = ['access_key_id'=>$this->client->getAccessKeyId()];
         $signature = Signature::getSign($postParams,$query,'POST',$this->client->getAccessKeySecret());
         $request->setParams($postParams);
