@@ -19,7 +19,6 @@ class Job
 
     private $callback_url;
     private $callback_params;
-    //const JOB_URL = 'http://service.cloud.ping-qu.com';
 
 
     public function __construct(Client $client)
