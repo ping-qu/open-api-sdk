@@ -17,9 +17,9 @@ class Client
 {
     private $accessKeyId;
     private $accessKeySecret;
-    private static $domain = 'http://yun.linyue.hznwce.com';
+    //private static $domain = 'http://yun.linyue.hznwce.com';
     private static $requireExtension = ['curl'];
-    //private static $domain = 'http://service.cloud.ping-qu.com';
+    private static $domain = 'http://service.cloud.ping-qu.com';
     public function __construct($accessKeyId,$accessKeySecret)
     {
         if (!is_string($accessKeyId) || !is_string($accessKeySecret)) {
@@ -27,7 +27,7 @@ class Client
         }
         $this->accessKeyId = trim($accessKeyId);
         $this->accessKeySecret = trim($accessKeySecret);
-        checkExtension(self::$requireExtension);
+        //checkExtension(self::$requireExtension);
     }
 
     public function VideoJob(){
