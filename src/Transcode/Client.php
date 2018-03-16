@@ -9,14 +9,17 @@ namespace Pingqu\OpenApiSdk\Transcode;
 
 
 use Pingqu\OpenApiSdk\Core\Exceptions\ClientException;
-use Pingqu\OpenApiSdk\Transcode\Video\Job;
+use Pingqu\OpenApiSdk\Transcode\Video\Job as VideoJob;
 use Pingqu\OpenApiSdk\Transcode\Video\Preset;
+use Pingqu\OpenApiSdk\Transcode\Live\Job as LiveJob;
 
 class Client
 {
     private $accessKeyId;
     private $accessKeySecret;
-    private static $domain = 'http://service.cloud.ping-qu.com';
+    private static $domain = 'http://yun.linyue.hznwce.com';
+    private static $requireExtension = ['curl'];
+    //private static $domain = 'http://service.cloud.ping-qu.com';
     public function __construct($accessKeyId,$accessKeySecret)
     {
         if (!is_string($accessKeyId) || !is_string($accessKeySecret)) {
@@ -24,10 +27,15 @@ class Client
         }
         $this->accessKeyId = trim($accessKeyId);
         $this->accessKeySecret = trim($accessKeySecret);
+        checkExtension(self::$requireExtension);
     }
 
     public function VideoJob(){
-        return new Job($this);
+        return new VideoJob($this);
+    }
+
+    public function LiveJob(){
+        return new LiveJob($this);
     }
 
     public function VideoPreset(){
@@ -45,4 +53,6 @@ class Client
     public function getDomain(){
         return self::$domain;
     }
+
+
 }

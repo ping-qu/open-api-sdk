@@ -13,11 +13,11 @@ class Signature
 {
     //签名算法,$query是GET参数
     public static function getSign($postData,$query,$method, $secret = '') {
-
         //签名步骤一：按字典序排序参数
         ksort($postData);
         ksort($query);
         $string1 = self::ToUrlParams($postData);
+        \Log::info($string1);
         $string2 = self::ToUrlParams($query);
         //签名步骤二：在string后加入KEY
         $string = $method.'/'.$string1 . $string2 . "&key=" . $secret;
@@ -30,13 +30,14 @@ class Signature
     }
 
     protected static function ToUrlParams($data) {
-
+        \Log::info($data);
         $buff = "";
-        foreach ($data as $k => $v)
-        {
-            if($k != "sign" && $v != "" && !is_array($v)){
-                $buff .= $k . "=" . $v . "&";
+        foreach ($data as $k => $v) {
+            if ($v == '' || is_array($v) || is_object($v)) {
+                continue;
             }
+
+            $buff .= $k . "=" . $v . "&";
         }
 
         $buff = trim($buff, "&");

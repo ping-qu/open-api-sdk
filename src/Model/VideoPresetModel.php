@@ -24,4 +24,6 @@ class VideoPresetModel
     public function getName(){
         return $this->name;
     }
+
+
 }
