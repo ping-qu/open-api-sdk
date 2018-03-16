@@ -7,7 +7,7 @@
  */
 namespace Pingqu\OpenApiSdk\Transcode\Live;
 
-use App\Exceptions\ApiException;
+
 use Pingqu\OpenApiSdk\Core\Auth\Signature;
 use Pingqu\OpenApiSdk\Core\Exceptions\ClientException;
 use Pingqu\OpenApiSdk\Core\Http\HttpBase;
@@ -17,7 +17,6 @@ use Pingqu\OpenApiSdk\Transcode\Client;
 class Job
 {
     private $upload_path;
-    private $preset_id_arr;
     public function __construct(Client $client)
     {
         $this->client = $client;
