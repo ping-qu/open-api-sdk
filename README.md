@@ -26,6 +26,7 @@ $client = new Client($access_key_id,$access_key_secret);
 $res = $client
           ->VideoJob()
           ->setCallbackUrl($callback_url) //设置转码结果通知url
+          ->setCallbackParams('test')
           ->add($input_path,$output_file,$preset_id,$pipeline_id);
 ```
 

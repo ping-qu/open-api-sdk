@@ -64,7 +64,7 @@ class Preset
     }
 
     public function setVideoBitRateBps($rate){
-        if (!is_integer($rate)||!($rate<=1200&&$rate>=200)){
+        if (!is_numeric($rate)||!($rate<=1200&&$rate>=200)){
             throw new ClientException('视频码率必须是整数并且大于200小于1200');
         }
         $this->video_rate_bps = $rate;
@@ -72,7 +72,7 @@ class Preset
     }
 
     public function setAudioBitRateBps($rate){
-        if (!is_integer($rate)||!($rate<=192&&$rate>=40)){
+        if (!is_numeric($rate)||!($rate<=192&&$rate>=40)){
             throw new ClientException('视频码率必须是整数并且大于200小于1200');
         }
         $this->audio_rate_bps = $rate;
@@ -80,7 +80,7 @@ class Preset
     }
 
     public function setFrameRate($rate){
-        if (!is_integer($rate)||!($rate<=60&&$rate>=10)){
+        if (!is_numeric($rate)||!($rate<=60&&$rate>=10)){
             throw new ClientException('视频帧率必须是整数并且大于10小于60');
         }
         $this->frame_rate = $rate;
@@ -100,14 +100,14 @@ class Preset
     }
     //声道
     public function setAudioChannel($channels){
-        if (!is_integer($channels)||$channels>3){
+        if (!is_numeric($channels)||$channels>3){
             throw new ClientException('声道数必须为整数并且不能大于2');
         }
         return $this;
     }
     //分辨率
     public function setPixel($width,$height){
-        if (!is_integer($width)||!is_integer($height)){
+        if (!is_numeric($width)||!is_numeric($height)){
             throw new ClientException('分辨率的宽高必须是整数');
         }
         $this->video_width_in_pixel = $width;

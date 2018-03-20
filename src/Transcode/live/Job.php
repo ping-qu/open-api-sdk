@@ -40,7 +40,7 @@ class Job
 
 
     public function add(array $preset_id,$oss_id){
-        if (!is_array($preset_id)||!is_integer($oss_id)){
+        if (!is_array($preset_id)||!is_numeric($oss_id)){
             throw new ClientException('参数类型错误');
         }
         $request = new Request();

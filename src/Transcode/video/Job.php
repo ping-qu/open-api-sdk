@@ -43,9 +43,6 @@ class Job
 
 
     public function add($inputFile, $outputFile,$presetId, $pipelineId){
-        if (!is_string($inputFile)||!is_string($outputFile)||!is_integer($presetId)||!is_integer($pipelineId)){
-            throw new ClientException('添加视频转码任务参数类型错误');
-        }
         $job = new VideoJobModel();
         $job->setInputFile($inputFile);
         $job->setOutputFile($outputFile);
@@ -77,7 +74,7 @@ class Job
     }
 
     public function delete($job_id){
-        if (!is_integer($job_id)){
+        if (!is_numeric($job_id)){
             throw new ClientException('job_id必须为整型');
         }
         $request = new Request();
@@ -93,7 +90,7 @@ class Job
 
 
     public function get($pipeline_id){
-        if (!is_integer($pipeline_id)){
+        if (!is_numeric($pipeline_id)){
             throw new ClientException('job_id必须为整型');
         }
         $request = new Request();

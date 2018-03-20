@@ -21,7 +21,7 @@ class VideoJobModel
     private $job_id;
     public function __construct($job_id = null)
     {
-        if ($job_id !== null && (!is_integer($job_id) || $job_id<=0)){
+        if ($job_id !== null && (!is_numeric($job_id) || $job_id<=0)){
             throw new ClientException('job_id不合法');
         }
         $this->job_id = $job_id;
@@ -48,13 +48,13 @@ class VideoJobModel
     }
 
     public function setPresetId($preset_id){
-        if (!is_integer($preset_id)){
+        if (!is_numeric($preset_id)){
             throw new ClientException('模板id必须为整数');
         }
     }
 
     public function setPipelineId($pipeline_id){
-        if (!is_integer($pipeline_id)){
+        if (!is_numeric($pipeline_id)){
             throw new ClientException('队列id必须为整数');
         }
     }
