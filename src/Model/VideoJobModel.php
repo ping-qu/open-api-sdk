@@ -8,6 +8,7 @@
  */
 namespace Pingqu\OpenApiSdk\Model;
 
+
 use Pingqu\OpenApiSdk\Core\Exceptions\ClientException;
 
 class VideoJobModel
@@ -51,12 +52,14 @@ class VideoJobModel
         if (!is_numeric($preset_id)){
             throw new ClientException('模板id必须为整数');
         }
+        $this->preset_id = $preset_id;
     }
 
     public function setPipelineId($pipeline_id){
         if (!is_numeric($pipeline_id)){
             throw new ClientException('队列id必须为整数');
         }
+        $this->pipeline_id = $pipeline_id;
     }
 
     public function getCallbackUrl(){
@@ -76,10 +79,16 @@ class VideoJobModel
     }
 
     public function getPresetId(){
+        if (empty($this->preset_id)){
+            throw new ClientException('preset_id不能为空');
+        }
         return $this->preset_id;
     }
 
     public function getPipelineId(){
+        if (empty($this->pipeline_id)){
+            throw new ClientException('pipeline_id不能为空');
+        }
         return $this->pipeline_id;
     }
 }
