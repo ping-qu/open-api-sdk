@@ -9,6 +9,10 @@ namespace Pingqu\OpenApiSdk\Transcode;
 
 
 use Pingqu\OpenApiSdk\Core\Exceptions\ClientException;
+use Pingqu\OpenApiSdk\Core\Middleware\CheckExtensionMiddleware;
+use Pingqu\OpenApiSdk\Core\Middleware\MiddlewareStock;
+use Pingqu\OpenApiSdk\Core\Middleware\ResponseMiddleware;
+use Pingqu\OpenApiSdk\Transcode\File\Job as FileJob;
 use Pingqu\OpenApiSdk\Transcode\Video\Job as VideoJob;
 use Pingqu\OpenApiSdk\Transcode\Video\Preset;
 use Pingqu\OpenApiSdk\Transcode\Live\Job as LiveJob;
@@ -28,6 +32,9 @@ class Client
         $this->accessKeyId = trim($accessKeyId);
         $this->accessKeySecret = trim($accessKeySecret);
         //checkExtension(self::$requireExtension);
+        $middlewareStock = new MiddlewareStock();
+        $middlewareStock->push(new CheckExtensionMiddleware(),'check_extension');
+
     }
 
     public function VideoJob(){
@@ -36,6 +43,10 @@ class Client
 
     public function LiveJob(){
         return new LiveJob($this);
+    }
+
+    public function FileJob(){
+        return new FileJob($this);
     }
 
     public function VideoPreset(){

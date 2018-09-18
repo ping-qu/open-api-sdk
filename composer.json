@@ -1,7 +1,7 @@
 {
 	"name": "ping-qu/open-api-sdk",
 	"description": "pingqu open api sdk",
-	"version": "1.0.3",
+	"version": "1.0.4",
 	"require": {
 		"php": ">=5.4"
 	},

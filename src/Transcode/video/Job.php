@@ -10,36 +10,14 @@ namespace Pingqu\OpenApiSdk\Transcode\Video;
 use Pingqu\OpenApiSdk\Core\Exceptions\ClientException;
 use Pingqu\OpenApiSdk\Core\Http\Request;
 use Pingqu\OpenApiSdk\Model\VideoJobModel;
+use Pingqu\OpenApiSdk\Transcode\abstractClass;
 use Pingqu\OpenApiSdk\Transcode\Client;
 use Pingqu\OpenApiSdk\Core\Http\HttpBase;
 use Pingqu\OpenApiSdk\Core\Auth\Signature;
 
-class Job
+class Job extends abstractClass
 {
-    private $client;
 
-    private $callback_url;
-    private $callback_params;
-
-
-    public function __construct(Client $client)
-    {
-        $this->client = $client;
-        $this->domain = $client->getDomain();
-    }
-
-    public function setCallbackUrl($url){
-        $this->callback_url = $url;
-        return $this;
-    }
-
-    public function setCallbackParams($params){
-        if (!is_string($params)){
-            throw new ClientException('自定义回调参数只能是字符串类型');
-        }
-        $this->callback_params = $params;
-        return $this;
-    }
 
 
     public function add($inputFile, $outputFile,$presetId, $pipelineId){
